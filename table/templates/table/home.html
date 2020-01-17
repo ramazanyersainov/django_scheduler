@@ -1,0 +1,68 @@
+{% extends "table/base.html" %}
+
+{% block content %}
+	<div class='row overflow-auto' id='scheduler-box' style='overflow-y:scroll'>
+		<div class='col-pixel-width-40' >
+			<p class='time-title'>09:00</p>
+			<p class='time-title'>10:00</p>
+			<p class='time-title'>11:00</p>
+			<p class='time-title'>12:00</p>
+			<p class='time-title'>13:00</p>
+			<p class='time-title'>14:00</p>
+			<p class='time-title'>15:00</p>
+			<p class='time-title'>16:00</p>
+			<p class='time-title'>17:00</p>
+			<p class='time-title'>18:00</p>
+			<p class='time-title'>19:00</p>
+		</div>
+		<div class='col day-block'>
+			<p class='text-center day-title'>Monday</p>
+			<div class='day-grid' id='M' position='relative'></div>
+		</div>
+		<div class='col day-block'>
+			<p class='text-center day-title'>Tuesday</p>
+			<div class='day-grid' id='T' position='relative'></div>
+		</div>
+		<div class='col day-block'>
+			<p class='text-center day-title'>Wednesday</p>
+			<div class='day-grid' id='W' position='relative'></div>
+		</div>
+		<div class='col day-block'>
+			<p class='text-center day-title'>Thursday</p>
+			<div class='day-grid' id='R' position='relative'></div>
+		</div>
+		<div class='col day-block'>
+			<p class='text-center day-title'>Friday</p>
+			<div class='day-grid' id='F' position='relative'></div>
+		</div>
+	</div>
+{% endblock content %}
+
+{% block sidebar %}
+
+	<form method="post" id='searchform'>
+		{% csrf_token %}
+		<fieldset class="form-group">
+			<legend class="border-bottom  mb-4">Search Course</legend>
+			<input type='text' class='form-control' id='searchbox'>
+		</fieldset>
+		<div class="form-group">
+			<button class="btn btn-outline-info" type="submit">Search</button>
+		</div>
+	</form>
+	<div id="courselist" class="list-group"></div>
+
+{% endblock %}
+
+{% block select-section %}
+<div id="select-block" class="content-section">
+	<form id='sectionaddform' style="font-size:80%">
+		{% csrf_token %}
+		<div id="select-section"></div>
+		<button type="submit" class="btn btn-info" id='add-course-button'>Add Course</button>
+		<button type="button" class="btn btn-danger" id='discard-button'>Delete</button>
+	</form>
+</div>
+{% endblock %}
+
+
